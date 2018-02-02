@@ -94,8 +94,8 @@
 				console.log(errorObj);
 			});
 	}
-	intervalVar = setInterval(function(){
-			loadPageData();
-	}, 1000 * 5);
+	// intervalVar = setInterval(function(){
+	// 		loadPageData();
+	// }, 1000 * 5);
 	$(document).ready(loadPageData());
 
