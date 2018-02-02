@@ -11,8 +11,8 @@
     projectId: "fir-d56b3",
     storageBucket: "",
     messagingSenderId: "852229870699"
-  };
-  firebase.initializeApp(config);
+  	};
+  	firebase.initializeApp(config);
 
 	var name;
 	var destination;
@@ -20,6 +20,7 @@
 	var firstTrain;
 	var nextArrival;
 	var minutesAway;
+	var intervalVar;
 	
 
 	var database = firebase.database();
@@ -69,28 +70,32 @@
 	// }, 1000 * 5);
 		
 	});
-loadPageData();
+
 	function loadPageData(){
+		$("#trainTable").empty();
 		var query = database.ref().orderByChild("dateAdded");
 		query.once("value")
 			.then(function(snapshot){
 				snapshot.forEach(function(childSnap){
-				var first = childSnap.firstTrain;	
+					
+				var first = childSnap.val().firstTrain;	
 				var convert1 = moment(first, "HH:mm").subtract(1, "years");
 				var currTime = moment();
 				var diffTime = moment().diff(moment(convert1), "minutes");
-				var remainder = diffTime % childSnap.frequency;
-				var minutesTilNext = parseInt(childSnap.frequency - remainder);
+				var remainder = diffTime % childSnap.val().frequency;
+				var minutesTilNext = parseInt(childSnap.val().frequency - remainder);
 				var nextArrival = currTime.add(minutesTilNext, "minutes").format("h:mm A");
 
-				$("#trainTable").append("<tr><td>"+childSnap.name+"</td><td>"+childSnap.destination+"</td><td>"+ childSnap.frequency + "</td><td>"+nextArrival+"</td><td>"+minutesTilNext+"</td>");
-				// return true;
+				$("#trainTable").append("<tr><td>"+childSnap.val().name+"</td><td>"+childSnap.val().destination+"</td><td>"+ childSnap.val().frequency + "</td><td>"+nextArrival+"</td><td>"+minutesTilNext+"</td>");
+				
 				});
 				
 			}, function (errorObj){
 				console.log(errorObj);
 			});
 	}
-
-
+	intervalVar = setInterval(function(){
+			loadPageData();
+	}, 1000 * 5);
+	$(document).ready(loadPageData());
 
