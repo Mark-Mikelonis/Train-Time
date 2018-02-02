@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+        <head>
+            <meta charset="utf-8">
+                <title>
+                    Train Time
+                </title>
+                <!-- Bootstrap -->
+                <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+                    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js">
+                    </script>
+                    <!-- Link CSS -->
+                    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+                        <!-- Firebase Reference -->
+                        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js">
+                        </script>
+                    </link>
+                </link>
+            </meta>
+        </head>
+    </link>
+</html>
+<body>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="text-center">
+                    Train Time
+                </h1>
+                <h3 class="text-center">
+                    We're Always On Time
+                </h3>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <strong>
+                                    Current Train Schedule
+                                </strong>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Train Name
+                                        </th>
+                                        <th>
+                                            Destination
+                                        </th>
+                                        <th>
+                                            Frequency (min)
+                                        </th>
+                                        <th>
+                                            Next Arrival
+                                        </th>
+                                        <th>
+                                            Minutes Away
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="trainTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Add New Trains -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <strong>
+                                    Add Train
+                                </strong>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <!-- Entry Form -->
+                            <form>
+                                <div class="form-group">
+                                    <label for="name-input">
+                                        Train Name
+                                    </label>
+                                    <input class="form-control" id="nameInput" type="text" placeholder="Sacramento Corridor">
+                                    </input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dest-input">
+                                        Destination
+                                    </label>
+                                    <input class="form-control" id="destInput" type="text" placeholder="San Francisco">
+                                    </input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="start-input">
+                                        First Train Time (HH:mm - military time)
+                                    </label>
+                                    <input class="form-control" id="timeInput" type="text" placeholder="14:00">
+                                    </input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monthly-input">
+                                        Frequency (min)
+                                    </label>
+                                    <input class="form-control" id="frequencyInput" type="text" placeholder="15">
+                                    </input>
+                                </div>
+                                <button class="btn btn-primary" id="addBtn" type="submit">
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        </script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+        </script>
+        <!-- Javascript -->
+        <script src="assets/javascript/app.js">
+        </script>
+    </body>
+</body>
